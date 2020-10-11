@@ -1,0 +1,15 @@
+{% extends "service_user/base.html" %} {% load crispy_forms_tags %} {% block content %} <div
+    class="user_card as container mt-5">
+    <div class="d-flex justify-content-center">
+        <h3 id="form-title" class='text-white'>services requested</h3>
+    </div>
+</div> {% for service in services %} <div class="container h-150 my-5">
+    <div class="d-flex justify-content-center ">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">{{service.service_id.service_name}} for <a href='#'><span class='text-info'>
+                            {{service.client_booked_for.user_info.username}}</span></a></h3>
+            </div>
+        </div>
+    </div>
+</div> {% endfor %} {% endblock %}
