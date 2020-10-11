@@ -25,12 +25,13 @@ def book_service(request, pk):
     service_user = service_user_details.objects.get(user_info = service.user_name)
     client_user = client_user_details.objects.get(user_info = request.user.id)
     new_booking = service_booking_detail(service_id= service, client_booked_for= client_user, service_provider= service_user)
+    print('\n' * 5)
+    print('_'*50)
+    print(f'from: {client_user.user_info.email},\n to:{service_user.user_info.email},\n service booked: {service.service_name}' )
+    print('_'*50)
+    print('\n' * 5)
+    
     new_booking.save()
-
-    services = service_booking_detail.objects.filter(client_booked_for = client_user)
-    context = {
-        'services': services
-    }
     return redirect('raised-sr')
 
 
